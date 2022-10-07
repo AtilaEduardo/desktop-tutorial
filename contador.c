@@ -12,11 +12,13 @@
       *   ALUNO(A):                                                    *
       ****************************************************************** */
 
-void contadorSimples();
-void contadorNsimples();
+void validarSimples();
+void validarNsimples();
+void calculaSimples(char *leitor, char *simbolo, int *valorIncremento);
+void calculaNsimples(char *leitor, char *simbolo, int *valorIncremento);
 void validaErroArqv();
 
-void contadorSimples(){
+void validarSimples(){
 	
 	char leitor[1024];
 	int a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,total;
@@ -33,110 +35,33 @@ void contadorSimples(){
 	}
 	
 	while(fgets(leitor,sizeof(leitor),arqv)!=NULL){
-		
-		if(strstr(leitor," + ") != '\0'){
-			a++;
-		}
-		
-		if(strstr(leitor," - ") != '\0'){
-			b++;
-		}
-		
-		if(strstr(leitor," * ") != '\0'){
-			c++;
-		}
-		
-		if(strstr(leitor," / ") != '\0'){
-			d++;
-		}
-		
-		if(strstr(leitor," // ") != '\0'){
-			e++;
-		}
-		
-		if(strstr(leitor," /* ") != '\0'){
-			f++;
-		}
-		
-		if(strstr(leitor," */ ") != '\0'){
-			g++;
-		}
-		
-		if(strstr(leitor," = ") != '\0'){
-			h++;
-		}
-		
-		if(strstr(leitor," == ") != '\0'){
-			i++;
-		}
-		
-		if(strstr(leitor," != ") != '\0'){
-			j++;
-		}
-		
-		if(strstr(leitor," -= ") != '\0'){
-			k++;
-		}
-		
-		if(strstr(leitor," += ") != '\0'){
-			l++;
-		}
-		
-		if(strstr(leitor,"if(") != '\0'){
-			m++;
-		}
-		
-		if(strstr(leitor,"else(") != '\0'){
-			n++;
-		}
-		
-		if(strstr(leitor,"wilhe(") != '\0'){
-			o++;
-		}
-		
-		if(strstr(leitor,"printf(") != '\0'){
-			p++;
-		}
-		
-		if(strstr(leitor,"scanf(") != '\0'){
-			q++;
-		}
-		
-		if(strstr(leitor,"int ") != '\0'){
-			r++;
-		}
-		
-		if(strstr(leitor,"float ") != '\0'){
-			s++;
-		}
-		
-		if(strstr(leitor,"double ") != '\0'){
-			t++;
-		}
-		
-		if(strstr(leitor,"long ") != '\0'){
-			u++;
-		}
-		
-		if(strstr(leitor," >= ") != '\0'){
-			v++;
-		}
-		
-		if(strstr(leitor," =< ") != '\0'){
-			w++;
-		}
-		
-		if(strstr(leitor," char ") != '\0'){
-			x++;
-		}
-		
-		if(strstr(leitor,"%") != '\0'){
-			y++;
-		}
-		
-		if(strstr(leitor,"&") != '\0'){
-			z++;
-		}
+				
+		calculaSimples(leitor," + ",&a);
+		calculaSimples(leitor," - ",&b);
+		calculaSimples(leitor," * ",&c);
+		calculaSimples(leitor," / ",&d);
+		calculaSimples(leitor," // ",&e);
+		calculaSimples(leitor," /* ",&f);
+		calculaSimples(leitor," */ ",&g);
+		calculaSimples(leitor," = ",&h);
+		calculaSimples(leitor," == ",&i);
+		calculaSimples(leitor," != ",&j);
+		calculaSimples(leitor," -= ",&k);
+		calculaSimples(leitor," += ",&l);		
+		calculaSimples(leitor,"if(",&m);
+		calculaSimples(leitor,"else",&n);
+		calculaSimples(leitor,"while(",&o);
+		calculaSimples(leitor,"printf(",&p);
+		calculaSimples(leitor,"scanf(",&q);		
+		calculaSimples(leitor,"int ",&r);
+		calculaSimples(leitor,"float ",&s);
+		calculaSimples(leitor,"double ",&t);
+		calculaSimples(leitor,"long ",&u);
+		calculaSimples(leitor," >= ",&v);
+		calculaSimples(leitor," =< ",&w);
+		calculaSimples(leitor,"char ",&x);
+		calculaSimples(leitor,"%",&y);
+		calculaSimples(leitor,"&",&z);		
 	}
 	
 	printf(" Contador  +: %d\n",a);
@@ -173,7 +98,7 @@ void contadorSimples(){
 	fclose(arqv);
 }
 
-void contadorNsimples(){
+void validarNsimples(){
 	FILE  *arqv;
 	arqv = fopen("zzzzzz.c","r+");
 	
@@ -232,6 +157,14 @@ void contadorNsimples(){
 	fclose(arqv);
 }
 
+void calculaSimples(char *leitor, char *simbolo, int *valorIncremento){
+
+	if(strstr(leitor,simbolo) != '\0'){
+		*valorIncremento = *valorIncremento +1;
+	}
+		
+}
+
 void validaErroArqv(){
 	
 	printf("************* contador.c **************\n");
@@ -249,16 +182,16 @@ int main(void){
 	setlocale(LC_ALL, "Portuguese");
 	
 	printf("\nChamada do contador simples\n");
-		contadorSimples();
+		validarSimples();
     
     printf("\n\nFim da execução contador simples!\n");
     
 	printf("\n\n======================Divisão de Contadores======================\n\n");
 	
 	printf("\nChamada do contador composto\n\n");
-		contadorNsimples();
+		validarNsimples();
 		
-	printf("\n\nFim da execução contador composto!\n");
+	printf("\n\nFim da execução contador não simples!\n");
 
 return 0;	
 }
