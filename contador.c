@@ -113,33 +113,14 @@ void validarNsimples(){
 	
 	while(fgets(leitor,sizeof(leitor),arqv)!=NULL){
 		
-		if(strstr(leitor,"for(") != '\0'){
-			a2 = a2 + 2;
-		}
-		
-		if(strstr(leitor,"do{") != '\0'){
-			b2 = b2 + 2;
-		}
-		
-		if(strstr(leitor,"}while(") != '\0'){
-			c2 = c2 + 2;
-		}
-		
-		if(strstr(leitor,"struct ") != '\0'){
-			d2 = d2 + 2;
-		}
-		
-		if(strstr(leitor,"typedef ") != '\0'){
-			e2 = e2 + 2;
-		}
-		
-		if(strstr(leitor,"switch ") != '\0'){
-			f2 = f2 + 2;
-		}
-		
-		if(strstr(leitor,"memset ") != '\0'){
-			g2 = g2 + 2;
-		}
+		calculaNsimples(leitor,"for(",&a2);
+		calculaNsimples(leitor,"for(",&a2);
+		calculaNsimples(leitor,"do{",&b2);
+		calculaNsimples(leitor,"}while(",&c2);
+		calculaNsimples(leitor,"struct ",&d2);
+		calculaNsimples(leitor,"typedef ",&e2);
+		calculaNsimples(leitor,"switch ",&f2);
+		calculaNsimples(leitor,"memset ",&g2);
 	}
 	
 	printf(" Contador for(): %d\n", a2);
@@ -161,6 +142,14 @@ void calculaSimples(char *leitor, char *simbolo, int *valorIncremento){
 
 	if(strstr(leitor,simbolo) != '\0'){
 		*valorIncremento = *valorIncremento +1;
+	}
+		
+}
+
+void calculaNsimples(char *leitor, char *simbolo, int *valorIncremento){
+
+	if(strstr(leitor,simbolo) != '\0'){
+		*valorIncremento = *valorIncremento +2;
 	}
 		
 }
