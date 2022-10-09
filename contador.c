@@ -3,13 +3,13 @@
 #include<string.h>
 #include <locale.h>
 
-/****************************************************************
-  *NOME DO PROGRAMA:  CONTADOR                                  *
-  *DESCRICAO: CONTA A QUANTIDADE DE FUNÇÕES SIMPLES E           *
-  *NÃO SIMPLES DE UM PROGRAMA .c E CALCULA O TOTAL DELAS        *
-  *DATA: 06/10/2022                                             *
-  *INSTITUIÇÃO: IFBA                                            *
-  *ALUNO(A):                                                    *
+/*****************************************************************
+  * NOME DO PROGRAMA:  CONTADOR                                  *
+  * DESCRICAO: CONTA A QUANTIDADE DE FUNÇÕES SIMPLES E           *
+  * NÃO SIMPLES DE UM PROGRAMA .c E CALCULA O TOTAL DELAS        *
+  * DATA: 06/10/2022                                             *
+  * INSTITUIÇÃO: IFBA                                            *
+  * ALUNO(A):                                                    *
   ****************************************************************/
 
 void validarSimples();
