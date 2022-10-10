@@ -24,7 +24,7 @@ struct leitorApoio *inicioLeitor = NULL, *conteudoLeitor = NULL;
 void validaErroArqv();
 void lerArquivo(char leitor[50]);
 leitor iniciarLista(char leitorAux, int leitorProx);
-
+void criarNo();
 
 leitor iniciarLista(char leitorAux, int leitorProx){
 	
@@ -50,6 +50,7 @@ void lerArquivo(char leitor[50]){
 		validaErroArqv();
 		
 	}else{
+	
 		while(fgets(leitor,sizeof(leitor),arq)!=NULL){
 	
 			if(contador != 0){
@@ -61,8 +62,7 @@ void lerArquivo(char leitor[50]){
 				aux1 = aux2;
 				conteudoLeitor = inicioLeitor;
 				contador++;
-			}
-		 	
+			}	 	
 		}
 	}
 	
@@ -71,7 +71,7 @@ void lerArquivo(char leitor[50]){
 
 void validaErroArqv(){
 	
-	printf("************* listaContador.c **************\n");
+    printf("************* listaContador.c **************\n");
     printf("*                                          *\n");
     printf("*         ERRO AO LER O CONTEUDO           *\n");
     printf("*             	DO ARQUIVO                 *\n");
@@ -82,11 +82,21 @@ void validaErroArqv(){
 	exit(1);
 }
 
+void criarNo(){
+	struct leitorApoio * auxLeitor;
+	
+	auxLeitor = inicioLeitor;
+
+	while(auxLeitor->proxAux != NULL){
+		auxLeitor = auxLeitor->proxAux;	
+	}
+	
+}
 
 int main(void){
 	
 	lerArquivo("ZZZZZZZ.c");
-	
+	criarNo();
 	
 	
 	return 0;
