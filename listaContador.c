@@ -9,7 +9,7 @@
   *   SIMPLES DE UM PROGRAMA .c E CALCULA O TOTAL DELAS            *
   *   DATA: 06/10/2022                                             *
   *   INSTITUIÇÃO: IFBA                                            *
-  *   ALUNO(A):                                                    *
+  *   ALUNO(A): ÁTILA EDUARDO DA CRUZ SANTOS CARDOSO               *
   *******************************************************************/
 
 struct leitorApoio{
@@ -20,11 +20,15 @@ struct leitorApoio{
 typedef struct leitorApoio *leitor;
 
 struct leitorApoio *inicioLeitor = NULL, *conteudoLeitor = NULL;
+struct leitorApoio *connteudo = NULL;
 
 void validaErroArqv();
 void lerArquivo(char leitor[50]);
 leitor iniciarLista(char leitorAux, int leitorProx);
 void criarNo();
+void varrerConteudo();
+leitor varrerdura(char varrer, leitor leitura);
+void limparTexto(struct leitorApoio *aux);
 
 leitor iniciarLista(char leitorAux, int leitorProx){
 	
@@ -91,6 +95,55 @@ void criarNo(){
 		auxLeitor = auxLeitor->proxAux;	
 	}
 	
+	auxLeitor = auxLeitor->proxAux;
+	conteudoLeitor = auxLeitor;
+}
+
+void varrerConteudo(){
+	struct leitorApoio *aux1, *aux2, *aux3, *aux4;
+	int contador;
+	contador = 0;
+	
+	aux1 = inicioLeitor;
+	aux4 = varrerdura('/',inicioLeitor);
+	limparTexto(inicioLeitor);
+
+}
+
+void limparTexto(struct leitorApoio *aux){
+
+	while(aux != NULL){
+		
+		if(aux->valorIncremento){
+		
+			aux->valorIncremento = 0;
+		
+		}
+		aux->proxAux;
+	}
+}
+
+leitor varrerdura(char varrer, leitor leitura){
+	
+	while(leitura != NULL){	
+		
+		if(leitura->valorIncremento == 0){
+			
+			if(leitura->simbolo == varrer){			
+				
+				return leitura; //entrega o endereco que possui a letra grava igual ao elemento buscado
+	
+			}else{
+				
+				leitura->valorIncremento = 1; //Informa que ja passou por esse numero
+				leitura = leitura->proxAux;
+			}
+		}else{	
+			
+			leitura = leitura->proxAux;
+		}
+	}
+	return 0;
 }
 
 int main(void){
