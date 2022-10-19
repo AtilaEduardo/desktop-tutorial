@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 #include<string.h>
 #include <locale.h>
 
@@ -169,18 +170,25 @@ void validaErroArqv(){
 
 int main(void){
 	setlocale(LC_ALL, "Portuguese");
+	double tempoExecucao = 0.0,tempoExecucao2 = 0.0;
 	
 	printf("\nChamada do contador simples\n");
+		clock_t begin = clock();
 		validarSimples();
-    
+    	clock_t end = clock();
+    	tempoExecucao += (double)((end - begin)) / CLOCKS_PER_SEC;
     printf("\n\nFim da execução contador simples!\n");
+    printf("\nTempo de Execucao: %f", tempoExecucao);
     
 	printf("\n\n======================Divisão de Contadores======================\n\n");
 	
 	printf("\nChamada do contador composto\n\n");
+		clock_t begin2 = clock();
 		validarNsimples();
-		
+    	clock_t end2 = clock();
+    	tempoExecucao2 += (double)((end2 - begin2)) / CLOCKS_PER_SEC;		
 	printf("\n\nFim da execução contador não simples!\n");
-
+	printf("\nTempo de Execucao: %f", tempoExecucao2);
+	
 return 0;	
 }
